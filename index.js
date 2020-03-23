@@ -3,7 +3,10 @@
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
+const ParseDashboard = require('parse-dashboard');
 var path = require('path');
+
+const allowInsecureHTTP = true;
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
@@ -25,8 +28,26 @@ var api = new ParseServer({
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
+const dashboard = new ParseDashboard({
+  "apps":[
+    {
+      "serverURL": 'http://solemb.herokuapp.com/parse',
+      "appId":'solemApp',
+      "masterKey":'myMasterKey',
+      "appName":'solemb'
+    }
+  ],
+  "users":[
+    {
+      "user":'admin',
+      "pass":'cliente'
+    }
+  ]
+}, allowInsecureHTTP);
+
 var app = express();
 
+app.use('/dashboard', dashboard);
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
 
