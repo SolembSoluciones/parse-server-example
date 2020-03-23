@@ -3,10 +3,10 @@
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
-const ParseDashboard = require('parse-dashboard');
+var ParseDashboard = require('parse-dashboard');
 var path = require('path');
 
-const allowInsecureHTTP = true;
+var allowInsecureHTTP = true;
 
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
