@@ -29,7 +29,7 @@ var api = new ParseServer({
 var dashboard = new ParseDashboard({
   "apps":[
     {
-      "serverURL": 'http://solemb.herokuapp.com/parse',
+      "serverURL": 'https://solemb.herokuapp.com/parse',
       "appId":'solemApp',
       "masterKey":'myMasterKey',
       "appName":'solemb'
