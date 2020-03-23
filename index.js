@@ -6,8 +6,6 @@ var ParseServer = require('parse-server').ParseServer;
 var ParseDashboard = require('parse-dashboard');
 var path = require('path');
 
-var allowInsecureHTTP = true;
-
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -28,7 +26,7 @@ var api = new ParseServer({
 // If you wish you require them, you can set them as options in the initialization above:
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
-const dashboard = new ParseDashboard({
+var dashboard = new ParseDashboard({
   "apps":[
     {
       "serverURL": 'http://solemb.herokuapp.com/parse',
@@ -43,7 +41,7 @@ const dashboard = new ParseDashboard({
       "pass":'cliente'
     }
   ]
-}, allowInsecureHTTP);
+}, { allowInsecureHTTP: true });
 
 var app = express();
 
