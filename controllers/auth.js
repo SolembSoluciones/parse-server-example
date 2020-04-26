@@ -1,5 +1,9 @@
 'use strict';
 
-exports.index = (req, res) =>{
-    res.render('index');
+exports.login = (req, res) => {
+    res.render('auth/login');
+};
+
+exports.dashboard = (req, res) => {
+    res.render('dashboard/index');
 };
